@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.GMMapper">
+
+
+	<select id="getGM" parameterType="String"
+		resultType="com.lrr.server.entity.GroupMessageBean">
+		select * from GroupMessage where teaId=#{teaId}
+	</select>
+
+	<update id="updateGM" parameterType="String">
+		UPDATE GroupMessage SET gMContent = #{gMContent} WHERE teaId=#{teaId}
+	</update>
+	
+	<insert id="insertGM" parameterType="String">
+		insert into GroupMessage values(#{teaId},#{gMContent})
+	</insert>
+	
+	<delete id="deleteGM" parameterType="String">
+		delete from GroupMessage where teaId=#{teaId}
+	</delete>
+</mapper>

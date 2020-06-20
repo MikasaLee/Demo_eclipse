@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.AnswerMapper">
+
+	<select id="findAnsByQuesId" parameterType="int"
+		resultType="com.lrr.server.entity.AnswerBean">
+		select * from Answer where quesId=#{quesId}
+	</select>
+	
+	<update id="updateAnsByQuesId" parameterType="int">
+		UPDATE Answer SET TeaContent = #{teaContent} WHERE quesId=#{quesId}
+	</update>
+	
+	<insert id="addAnswer" parameterType="com.lrr.server.entity.AnswerBean">
+		insert into Answer(QuesId,TeaContent) values(#{quesId},#{teaContent})
+	</insert>
+	
+	<delete id="delAnsByQuesId" parameterType="String">
+		delete from Answer where quesId=#{quesId}
+	</delete>
+</mapper>

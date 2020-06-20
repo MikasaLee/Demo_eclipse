@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.QuestionMapper">
+
+
+	<insert id="addQuestion" parameterType="com.lrr.server.entity.QuestionBean">
+		insert into Question(stuId,stuContent) values(#{stuId},#{stuContent})
+	</insert>
+	
+	<select id="findQuesByStuId" parameterType="String"
+		resultType="com.lrr.server.entity.QuestionBean">
+		select * from Question where stuId=#{stuId}
+	</select>
+	
+	<select id="findQuestion" parameterType="String"
+		resultType="com.lrr.server.entity.QuestionBean">
+		select * from Question where stuId=#{stuId} and stuContent=#{stuContent}
+	</select>
+	
+	<delete id="delQuestion" parameterType="String">
+		delete from Question where stuId=#{stuId}
+	</delete>
+</mapper>
+

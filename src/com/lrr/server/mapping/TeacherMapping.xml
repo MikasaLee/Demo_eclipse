@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.TeacherMapper">
+
+	<select id="findTeaById" parameterType="String"
+		resultType="com.lrr.server.entity.TeacherBean">
+		select * from Teacher where teaId=#{teaId}
+	</select>
+
+	<select id="findTeaByStuId" parameterType="String"
+		resultType="com.lrr.server.entity.TeacherBean">
+		select * from STGroup where stuId=#{stuId}
+	</select>
+	
+	
+	<select id="getTeas" parameterType="String"
+		resultType="com.lrr.server.entity.TeacherBean">
+		select * from Teacher
+	</select>
+	
+	<insert id="addTeacher" parameterType="com.lrr.server.entity.TeacherBean">
+		insert into Teacher values(#{teaId},#{teaName},#{collegeName},#{teaGrade})
+	</insert>
+	
+	<update id="updTeacher" parameterType="com.lrr.server.entity.TeacherBean">
+		UPDATE Teacher SET teaName = #{teaName}, collegeName = #{collegeName},teaGrade = #{teaGrade} 
+			WHERE teaId=#{teaId}
+	</update>
+	
+	<delete id="delTeacher" parameterType="String">
+		delete from Teacher where teaId=#{teaId}
+	</delete>
+</mapper>

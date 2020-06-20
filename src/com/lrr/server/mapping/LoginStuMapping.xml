@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.LoginStuMapper">
+
+	<!-- 用户登录查询 -->
+	<select id="findLoginStu" parameterType="String"
+		resultType="com.lrr.server.entity.LoginStu">
+		select * from LoginStu where stuId=#{stuId} and password=#{password}
+	</select>
+
+	<insert id="addLoginStu" parameterType="String">
+		insert into LoginStu values(#{stuId},#{password})
+	</insert>
+	
+	<update id="updLoginStu" parameterType="String">
+		UPDATE LoginStu SET password = #{password}
+			WHERE stuId=#{stuId}
+	</update>
+	
+	<delete id="delLoginStu" parameterType="String">
+		delete from LoginStu where stuId=#{stuId}
+	</delete>
+</mapper>

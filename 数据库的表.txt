@@ -1,0 +1,106 @@
+
+
+
+
+
+
+
+create table Student(
+	StuId char(20) primary key,
+	StuName char(20),
+	CollegeName char(20),
+	StuClass char(20)
+);
+
+
+create table LoginStu(
+	StuId char(20) primary key,
+	password char(20),
+	foreign key(StuId) references Student(StuId)
+);
+
+
+
+create table Teacher(
+	TeaId char(20) primary key,
+	TeaName char(20),
+	
+	CollegeName char(20),
+	TeaGrade char(20)
+);
+
+
+create table LoginTea(
+	TeaId char(20) primary key,
+	password char(20),
+	foreign key(TeaId) references Teacher(TeaId)
+);
+
+
+create table Root(
+	RootId char(20) primary key,
+	RootName char(20)
+);
+
+
+create table LoginRoot(
+	RootId char(20) primary key,
+	password char(20),
+	foreign key(RootId) references Root(RootId)
+);
+
+//学生老师组
+create table STGroup(
+	StuId char(20) primary key,
+	TeaId char(20),
+	
+	foreign key(StuId) references Student(StuId),
+	foreign key(TeaId) references Teacher(TeaId)
+);
+
+create table Question(
+	QuesId int primary key auto_increment,
+	StuId char(20),
+	
+	StuContent char(100),
+	foreign key(StuId) references Student(StuId)
+);
+
+create table Answer(
+	AnswerId int primary key auto_increment,
+	QuesId int,
+	TeaContent char(100),
+	
+	foreign key(QuesId) references Question(QuesId)
+);
+
+//管理员公告，只有一条数据
+create table Information(
+	InforContent char(100)
+);
+
+
+//群发消息，每个老师只有一条数据
+create table GroupMessage(
+	TeaId char(20) primary key,
+	GMContent char(100),
+	foreign key(TeaId) references Teacher(TeaId)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

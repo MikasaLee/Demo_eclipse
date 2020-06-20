@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.StudentMapper">
+
+	<!-- 用户登录查询 -->
+	<select id="findStuById" parameterType="String"
+		resultType="com.lrr.server.entity.StudentBean">
+		select * from student where stuId=#{stuId}
+	</select>
+
+	<select id="getStus" parameterType="String"
+		resultType="com.lrr.server.entity.StudentBean">
+		select * from student
+	</select>
+	
+	<insert id="addStudent" parameterType="com.lrr.server.entity.StudentBean">
+		insert into student values(#{stuId},#{stuName},#{collegeName},#{stuClass})
+	</insert>
+	
+	<update id="updStudent" parameterType="com.lrr.server.entity.StudentBean">
+		UPDATE student SET stuName = #{stuName}, collegeName = #{collegeName},stuClass = #{stuClass} 
+			WHERE stuId=#{stuId}
+	</update>
+	
+	<delete id="delStudent" parameterType="String">
+		delete from student where stuId=#{stuId}
+	</delete>
+</mapper>

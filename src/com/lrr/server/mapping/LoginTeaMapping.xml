@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.LoginTeaMapper">
+
+	<!-- 用户登录查询 -->
+	<select id="findLoginTea" parameterType="String"
+		resultType="com.lrr.server.entity.LoginTea">
+		select * from LoginTea where teaId=#{teaId} and password=#{password}
+	</select>
+
+	<insert id="addLoginTea" parameterType="String">
+		insert into LoginTea values(#{teaId},#{password})
+	</insert>
+	
+	<update id="updLoginTea" parameterType="String">
+		UPDATE LoginTea SET password = #{password}
+			WHERE teaId=#{teaId}
+	</update>
+	
+	<delete id="delLoginTea" parameterType="String">
+		delete from LoginTea where teaId=#{teaId}
+	</delete>
+</mapper>

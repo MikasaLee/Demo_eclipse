@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lrr.server.mapping.STGroupMapper">
+
+	<!-- 用户登录查询 -->
+	<select id="findStudentsByTeaId" parameterType="String"
+		resultType="com.lrr.server.entity.StudentBean">
+		select * from STGroup where teaId=#{teaId}
+	</select>
+	
+	<insert id="addBind" parameterType="String">
+		insert into STGroup values(#{stuId},#{teaId})
+	</insert>
+	
+	
+	<delete id="delBind" parameterType="String">
+		delete from STGroup where stuId=#{stuId}
+	</delete>
+</mapper>
